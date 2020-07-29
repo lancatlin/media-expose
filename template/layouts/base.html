@@ -3,18 +3,18 @@
 <html>
 
 <head>
-  {{ template "head" .Meta }}
+  {{ template "head" .Session }}
 </head>
 
 <body>
   <div class="hero_area">
     <header>
-      {{ template "header" .Meta }}
+      {{ template "header" .Session }}
     </header>
     {{ block "content" .Data }}{{ end }}
     {{ block "content_with_meta" . }}{{  end }}
     <footer>
-      {{ template "footer" .Meta }}
+      {{ template "footer" .Session }}
     </footer>
   </div> 
 </body>
