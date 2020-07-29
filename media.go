@@ -13,5 +13,5 @@ type Media struct {
 	Note    string
 
 	Company   Company
-	CompanyID uint
+	CompanyID uint `json:"company_id"`
 }
