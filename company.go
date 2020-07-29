@@ -9,5 +9,5 @@ type Company struct {
 	Country         string
 	Owner           string
 	Shareholders    string
-	InvestedByChina bool
+	InvestedByChina bool `json:"invested_by_china"`
 }
