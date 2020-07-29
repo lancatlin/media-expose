@@ -24,9 +24,14 @@ func NewHandler(db *gorm.DB) Handler {
 	}
 	h.loadTemplates()
 	h.router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	h.router.HandleFunc("/", h.page("index"))
-	h.router.HandleFunc("/media", h.NewMedia).Methods("POST")
+	h.HandleFunc("/", h.page("index"))
+	h.HandleFunc("/media", h.NewMedia).Methods("POST")
+	h.HandleFunc("/companies", h.NewCompanies).Methods("POST")
 	return h
+}
+
+func (h Handler) HandleFunc(path string, f http.HandlerFunc) *mux.Route {
+	return h.router.Handle(path, f)
 }
 
 func (h Handler) NewMedia(w http.ResponseWriter, r *http.Request) {
@@ -36,4 +41,13 @@ func (h Handler) NewMedia(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), 500)
 	}
 	log.Println(media)
+}
+
+func (h Handler) NewCompanies(w http.ResponseWriter, r *http.Request) {
+	dec := json.NewDecoder(r.Body)
+	var company Company
+	if err := dec.Decode(&company); err != nil {
+		http.Error(w, err.Error(), 500)
+	}
+	log.Println(company)
 }
