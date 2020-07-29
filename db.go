@@ -9,7 +9,7 @@ func OpenDB(conf Configure) (db *gorm.DB) {
 	// for testing
 	if conf.Debug {
 		var err error
-		db, err = gorm.Open("sqlite3", "/tmp/gorm.db")
+		db, err = gorm.Open("sqlite3", "file::memory:?cache=shared")
 		if err != nil {
 			panic(err)
 		}

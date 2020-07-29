@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -50,4 +51,13 @@ func (h Handler) NewCompanies(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), 500)
 	}
 	log.Println(company)
+	if err := h.VerifyCompany(company); err != nil {
+		http.Error(w, err.Error(), 403)
+		return
+	}
+	if err := h.db.Create(&company).Error; err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	fmt.Fprintln(w, company.ID)
 }

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-type Meta struct {
+type Session struct {
 }
 
 func (h *Handler) loadTemplates() {
@@ -37,10 +37,10 @@ func (h *Handler) loadTemplates() {
 func (h Handler) HTML(w http.ResponseWriter, r *http.Request, page string, data interface{}) {
 	pageData := struct {
 		Data interface{}
-		Meta Meta
+		Meta Session
 	}{
 		Data: data,
-		Meta: Meta{},
+		Meta: Session{},
 	}
 	if tpl, ok := h.tpls[page]; ok {
 		if err := tpl.ExecuteTemplate(w, "base", pageData); err != nil {
