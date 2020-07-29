@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"html/template"
 	"log"
 	"net/http"
 
@@ -12,15 +13,20 @@ import (
 type Handler struct {
 	db     *gorm.DB
 	router *mux.Router
+
+	tpls map[string]*template.Template
 }
 
 func NewHandler(db *gorm.DB) Handler {
-	handler := Handler{
+	h := Handler{
 		db:     db,
 		router: mux.NewRouter(),
 	}
-	handler.router.HandleFunc("/media", handler.NewMedia).Methods("POST")
-	return handler
+	h.loadTemplates()
+	h.router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	h.router.HandleFunc("/", h.page("index"))
+	h.router.HandleFunc("/media", h.NewMedia).Methods("POST")
+	return h
 }
 
 func (h Handler) NewMedia(w http.ResponseWriter, r *http.Request) {
