@@ -7,7 +7,7 @@ import (
 )
 
 type Configure struct {
-	Debug bool
+	Mode string
 
 	Server struct {
 		Base string
@@ -41,7 +41,7 @@ func InitialConfigure(path string) (err error) {
 	}
 
 	var conf Configure
-	conf.Debug = true
+	conf.Mode = "mysql"
 	conf.Server.Base = "http://localhost:8080"
 	conf.Server.Port = 8080
 	conf.Database.Host = "localhost"
