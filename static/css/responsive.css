@@ -162,11 +162,16 @@
     height: 165px;
     left: 30%;
     top: 43px;
-
   }
 
   .footer_section p {
     width: 100%;
+  }
+  .search-button{
+    text-align:center;
+  }
+  .form-group label{
+    text-align: left;
   }
 }
 

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="AIS3-2020-國家安全-第三組" />
+
+  <title>公司列表 | MediaExpose</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="css/notosanstc.css" rel="stylesheet" />
+
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <div class="navbar-brand">
+            <a href="index.html"><img src="images/AIS3logo.png" alt=""></a>
+            <strong>MediaExpose</strong>
+          </div>
+          <div class="navbar-collapse" id="">
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1">
+
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="index.html">首頁</a>
+                <a href="new.html">新增媒體資料</a>
+                <a href="media.html">媒體列表</a>
+                <a href="companies.html">公司列表</a>
+                <a href="about.html">關於我們</a>
+                <a href="login.html">登入</a>
+                <a href="register.html">註冊</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding-bottom">
+    <div class="square-box">
+      <img src="images/square.png" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+       <div class="col-md-12">
+         <div class="detail-box">
+           <div class="heading_container">
+             <h2>
+               公司資訊
+             </h2><br>
+           </div>
+           <div class="form-inline form-group sarch-group">
+             <label for="InputSearch">搜尋欄位</label>
+             <input type="text" class="form-control mx-sm-3" id="InputSearch" placeholder="尚未輸入 ...">
+             <small id="searchlHelp" class="form-text text-muted">欄位進行 OR 操作 「公司名稱 or 所屬國家 or 擁有人」</small>
+           </div>
+           <div class="search-button col-md-2">
+             <button type="submit" class="btn btn-primary col-md-12">搜 尋</button>
+           </div>
+           <table id="myTable" class="table table-hover table-dark tablesorter ">
+              <thead>
+                <tr>
+                  <th>公司名稱</th>
+                  <th>所屬國家</th>
+                  <th>擁有人</th>
+                  <th>是否陸資</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>旺旺中時媒體集團</td>
+                  <td>TW</td>
+                  <td>OOO</td>
+                  <td>是!?</td>
+                </tr>
+                <tr>
+                  <td>旺旺旺旺旺旺中時媒體集團</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                </tr>
+                <tr>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                </tr>
+              </tbody>
+            </table>
+         </div>
+       </div>
+     </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section ">
+    <div class="container">
+      <p>
+        &copy; <span>AIS3 - 2020 - 國家安全 - 第三組</span>
+      </p>
+    </div>
+  </section>
+  <!-- end  footer section -->
+
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
+  <script src='//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.30.5/css/theme.blue.min.css"></link>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.30.5/js/jquery.tablesorter.min.js"></script>
+  <script>
+    $("#myTable").tablesorter({
+    });
+  </script>
+
+</body>
+
+</html>
