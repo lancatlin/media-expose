@@ -68,6 +68,15 @@ func (c Company) Marshal(w io.Writer) {
 	}
 }
 
+func CompaniesPage(w http.ResponseWriter, r *http.Request) {
+	var companies []Company
+	err := db.Find(&companies).Error
+	if err != nil {
+		panic(err)
+	}
+	HTML(w, r, "companies", companies)
+}
+
 func NotFound(err error) bool {
 	return gorm.IsRecordNotFoundError(err)
 }

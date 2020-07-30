@@ -33,24 +33,14 @@
                 </tr>
               </thead>
               <tbody>
+                {{ range . }}
                 <tr>
-                  <td>旺旺中時媒體集團</td>
-                  <td>TW</td>
-                  <td>OOO</td>
-                  <td>是!?</td>
+                  <td>{{ .Name }}</td>
+                  <td>{{ .Country }}</td>
+                  <td>{{ .Owner }}</td>
+                  <td>{{ .InvestedByChina }}</td>
                 </tr>
-                <tr>
-                  <td>旺旺旺旺旺旺中時媒體集團</td>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                </tr>
-                <tr>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                </tr>
+                {{ end }}
               </tbody>
             </table>
          </div>
