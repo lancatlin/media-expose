@@ -11,6 +11,7 @@ func NewRouter() *mux.Router {
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	r.HandleFunc("/", page("index"))
 
+	r.HandleFunc("/media", page("media")).Methods("GET")
 	r.HandleFunc("/media", newMedia).Methods("POST")
 	r.HandleFunc("/media/{id}", getMedia).Methods("GET")
 
