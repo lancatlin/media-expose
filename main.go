@@ -22,9 +22,11 @@ func main() {
 		return
 	}
 	fmt.Println(configure)
-	handler := NewHandler(OpenDB(configure))
+	OpenDB(configure)
+	loadTemplates()
+	r := NewRouter()
 	srv := http.Server{
-		Handler:      handler.router,
+		Handler:      r,
 		Addr:         fmt.Sprintf("0.0.0.0:%d", configure.Server.Port),
 		WriteTimeout: 5 * time.Second,
 		ReadTimeout:  5 * time.Second,
