@@ -10,8 +10,8 @@ import (
 type Session struct {
 }
 
-func (h *Handler) loadTemplates() {
-	h.tpls = make(map[string]*template.Template)
+func loadTemplates() {
+	tpls = make(map[string]*template.Template)
 	mainTmpl := template.New("main")
 	mainTmpl.Funcs(template.FuncMap{})
 	layoutFiles, err := filepath.Glob("template/layouts/*.html")
@@ -30,19 +30,19 @@ func (h *Handler) loadTemplates() {
 		fileName := filepath.Base(file)
 		files[0] = file
 		tpl := template.Must(mainTmpl.Clone())
-		h.tpls[strings.TrimSuffix(fileName, ".html")] = template.Must(tpl.ParseFiles(files...))
+		tpls[strings.TrimSuffix(fileName, ".html")] = template.Must(tpl.ParseFiles(files...))
 	}
 }
 
-func (h Handler) HTML(w http.ResponseWriter, r *http.Request, page string, data interface{}) {
+func HTML(w http.ResponseWriter, r *http.Request, page string, data interface{}) {
 	pageData := struct {
-		Data interface{}
-		Meta Session
+		Data    interface{}
+		Session Session
 	}{
-		Data: data,
-		Meta: Session{},
+		Data:    data,
+		Session: Session{},
 	}
-	if tpl, ok := h.tpls[page]; ok {
+	if tpl, ok := tpls[page]; ok {
 		if err := tpl.ExecuteTemplate(w, "base", pageData); err != nil {
 			http.Error(w, err.Error(), 500)
 		}
@@ -51,14 +51,14 @@ func (h Handler) HTML(w http.ResponseWriter, r *http.Request, page string, data 
 	}
 }
 
-func (h Handler) page(path string) http.HandlerFunc {
+func page(path string) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		h.HTML(w, r, path, nil)
+		HTML(w, r, path, nil)
 	}
 }
 
-func (h Handler) message(w http.ResponseWriter, r *http.Request, title, msg string) {
-	h.HTML(w, r, "message.htm", struct {
+func message(w http.ResponseWriter, r *http.Request, title, msg string) {
+	HTML(w, r, "message.htm", struct {
 		Title, Message string
 	}{title, msg})
 }

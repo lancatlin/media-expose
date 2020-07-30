@@ -28,13 +28,8 @@ type CompanyChecker struct {
 	db      *gorm.DB
 }
 
-func (h Handler) VerifyCompany(company Company) error {
-	checker := CompanyChecker{company, h.db}
-	return checker.Verify()
-}
-
-func (c CompanyChecker) Verify() (err error) {
-	if c.company.ID != 0 {
+func (c Company) Verify() (err error) {
+	if c.ID != 0 {
 		return errors.New("id should be 0")
 	}
 
@@ -46,18 +41,18 @@ func (c CompanyChecker) Verify() (err error) {
 		return errors.New("some data is too long")
 	}
 
-	if c.company.IsEmpty() {
+	if c.IsEmpty() {
 		return errors.New("some required data is empty")
 	}
 	return nil
 }
 
-func (c CompanyChecker) DuplicateName() bool {
-	return !gorm.IsRecordNotFoundError(c.db.Where("name = ?", c.company.Name).First(&Company{}).Error)
+func (c Company) DuplicateName() bool {
+	return !gorm.IsRecordNotFoundError(db.Where("name = ?", c.Name).First(&Company{}).Error)
 }
 
-func (c CompanyChecker) TooLong() bool {
-	return c.company.TooLong() || len(c.company.Owner) > 10 || len(c.company.Shareholders) > 30
+func (c Company) TooLong() bool {
+	return c.Meta.TooLong() || len(c.Owner) > 10 || len(c.Shareholders) > 30
 }
 
 func (m Meta) TooLong() bool {
