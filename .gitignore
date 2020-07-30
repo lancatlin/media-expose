@@ -16,3 +16,4 @@
 configure.yaml
 go.sum
 media-expose
+.vscode

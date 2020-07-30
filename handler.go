@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -22,7 +21,9 @@ func NewRouter() *mux.Router {
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	r.HandleFunc("/", page("index"))
 	r.HandleFunc("/media", NewMedia).Methods("POST")
-	r.HandleFunc("/companies", NewCompanies).Methods("POST")
+
+	r.HandleFunc("/companies", NewCompany).Methods("POST")
+	r.HandleFunc("/companies/{id}", GetCompany).Methods("GET")
 	return r
 }
 
@@ -33,22 +34,4 @@ func NewMedia(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), 500)
 	}
 	log.Println(media)
-}
-
-func NewCompanies(w http.ResponseWriter, r *http.Request) {
-	dec := json.NewDecoder(r.Body)
-	var company Company
-	if err := dec.Decode(&company); err != nil {
-		http.Error(w, err.Error(), 500)
-	}
-	log.Println(company)
-	if err := company.Verify(); err != nil {
-		http.Error(w, err.Error(), 403)
-		return
-	}
-	if err := db.Create(&company).Error; err != nil {
-		http.Error(w, err.Error(), 500)
-		return
-	}
-	fmt.Fprintln(w, company.ID)
 }
