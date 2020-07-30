@@ -17,6 +17,10 @@ func TestNewCompany(t *testing.T) {
 	}`
 	response := curl("POST", "/companies", body)
 	assert.Equal(t, 200, response.StatusCode, resBody(response))
+	assert.Equal(t, "1", resBody(response))
+
+	response = curl("GET", "/media/1", "")
+	assert.Equal(t, 200, response.StatusCode)
 }
 
 func TestDupCompany(t *testing.T) {
