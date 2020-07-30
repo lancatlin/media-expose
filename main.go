@@ -3,12 +3,19 @@ package main
 import (
 	"flag"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/jinzhu/gorm"
 )
 
 var (
+	db *gorm.DB
+
+	tpls map[string]*template.Template
+
 	ConfPath  string
 	configure Configure
 )
