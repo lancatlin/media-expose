@@ -24,3 +24,14 @@ func TestSearchByDomain(t *testing.T) {
 
 	assert.Equal(t, media.Domain, newMedia.Domain)
 }
+
+func TestSearchNotFound(t *testing.T) {
+	openTestDB()
+	media := Media{
+		Domain: "example.com",
+	}
+	assert.NoError(t, db.Create(&media).Error)
+	domain := "another.com"
+	response := curl("GET", "/api/search?domain="+domain, "")
+	assert.Equal(t, 404, response.StatusCode, resBody(response))
+}
