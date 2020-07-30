@@ -12,7 +12,7 @@ func NewRouter() *mux.Router {
 	r.HandleFunc("/", page("index"))
 	r.HandleFunc("/new", page("new"))
 
-	r.HandleFunc("/media", page("media")).Methods("GET")
+	r.HandleFunc("/media", MediaPage).Methods("GET")
 	r.HandleFunc("/media", newMedia).Methods("POST")
 	r.HandleFunc("/media/{id}", getMedia).Methods("GET")
 

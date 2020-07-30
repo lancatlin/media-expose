@@ -87,6 +87,15 @@ func getMedia(w http.ResponseWriter, r *http.Request) {
 	media.JSON(w)
 }
 
+func MediaPage(w http.ResponseWriter, r *http.Request) {
+	var media []Media
+	err := db.Preload("Company").Find(&media).Error
+	if err != nil {
+		panic(err)
+	}
+	HTML(w, r, "media", media)
+}
+
 func (m Media) JSON(w io.Writer) {
 	enc := json.NewEncoder(w)
 	if err := enc.Encode(m); err != nil {
