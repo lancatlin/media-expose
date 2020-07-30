@@ -24,7 +24,7 @@ func TestNewMedia(t *testing.T) {
 		"shareholders": "Shareholders",
 		"invested_by_china": true
 	}`
-	response := curl("POST", "/companies", company)
+	response := curl("POST", "/api/companies", company)
 	assert.Equal(t, 200, response.StatusCode, resBody(response))
 
 	media := `{
@@ -35,7 +35,10 @@ func TestNewMedia(t *testing.T) {
 		"source": "Wikipedia", 
 		"note": "Note"
 	}`
-	response = curl("POST", "/media", media)
+	response = curl("POST", "/api/media", media)
+	assert.Equal(t, 200, response.StatusCode, resBody(response))
+
+	response = curl("GET", "/api/media/1", "")
 	assert.Equal(t, 200, response.StatusCode, resBody(response))
 }
 
@@ -50,6 +53,6 @@ func TestCompanyNotFound(t *testing.T) {
 		"note": "Note"
 	}`
 
-	response := curl("POST", "/media", media)
+	response := curl("POST", "/api/media", media)
 	assert.Error(t, ErrCompanyNotExist, resBody(response))
 }

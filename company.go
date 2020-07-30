@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"time"
 
@@ -33,18 +32,16 @@ func NewCompany(w http.ResponseWriter, r *http.Request) {
 	dec := json.NewDecoder(r.Body)
 	var company Company
 	if err := dec.Decode(&company); err != nil {
-		http.Error(w, err.Error(), 500)
+		http.Error(w, "cannot decode to json: "+err.Error(), 403)
 	}
-	log.Println(company)
 	if err := company.Verify(); err != nil {
 		http.Error(w, err.Error(), 403)
 		return
 	}
 	if err := db.Create(&company).Error; err != nil {
-		http.Error(w, err.Error(), 500)
-		return
+		panic(err)
 	}
-	fmt.Fprintln(w, company.ID)
+	fmt.Fprint(w, company.ID)
 }
 
 func GetCompany(w http.ResponseWriter, r *http.Request) {

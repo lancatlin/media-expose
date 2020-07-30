@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"net"
 	"net/http"
 
@@ -33,7 +32,6 @@ func newMedia(w http.ResponseWriter, r *http.Request) {
 	if err := dec.Decode(&media); err != nil {
 		http.Error(w, err.Error(), 500)
 	}
-	log.Println(media)
 
 	if err := media.Verify(); err != nil {
 		http.Error(w, err.Error(), 403)
@@ -42,7 +40,7 @@ func newMedia(w http.ResponseWriter, r *http.Request) {
 	if err := db.Create(&media).Error; err != nil {
 		panic(err)
 	}
-	fmt.Fprintln(w, media.ID)
+	fmt.Fprint(w, media.ID)
 }
 
 func (m Media) Verify() (err error) {

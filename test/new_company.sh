@@ -6,7 +6,7 @@ curl -d '{
   "owner": "Owner",
   "shareholders": "Shareholders",
   "invested_by_china": true
-}' http://localhost:8080/companies
+}' http://localhost:8080/api/companies
 
 curl -d '{
   "name": "Company Name",
@@ -14,7 +14,7 @@ curl -d '{
   "owner": "Owner",
   "shareholders": "Shareholders",
   "invested_by_china": true
-}' http://localhost:8080/companies
+}' http://localhost:8080/api/companies
 
 curl -d '{
   "name": "Company Name TOO LONGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG",
@@ -22,11 +22,11 @@ curl -d '{
   "owner": "Owner",
   "shareholders": "Shareholders",
   "invested_by_china": true
-}' http://localhost:8080/companies
+}' http://localhost:8080/api/companies
 
 curl -d '{
   "country": "CN",
   "owner": "Owner",
   "shareholders": "Shareholders",
   "invested_by_china": true
-}' http://localhost:8080/companies
+}' http://localhost:8080/api/companies
