@@ -8,8 +8,7 @@ import (
 	"strconv"
 )
 
-// ImportCompanies from CSV file
-func ImportCompanies(r io.Reader) {
+func ImportCSV(r io.Reader, processor func(func(string) string) error) {
 	dec := csv.NewReader(r)
 	columnNames, err := dec.Read()
 	if err != nil {
@@ -32,28 +31,58 @@ func ImportCompanies(r io.Reader) {
 			return row[columns[key]]
 		}
 
-		company := Company{
-			Meta: Meta{
-				ID:     MustParseUInt(col("id")),
-				Name:   col("name"),
-				Source: col("source"),
-				Note:   col("note"),
-			},
-			Owner:           col("owner"),
-			Shareholders:    col("shareholders"),
-			InvestedByChina: MustParseBool(col("invested_by_china")),
+		if err = processor(col); err != nil {
+			fmt.Println(err.Error(), row)
 		}
-		if err = company.Verify(); err != nil {
-			fmt.Println(err.Error(), company)
-			continue
-		}
-		err = db.Create(&company).Error
-		if err != nil {
-			fmt.Println(err.Error(), company)
-			continue
-		}
-		fmt.Printf("success import %s\n", company.Name)
 	}
+}
+
+// ImportCompanies from CSV file
+func ImportCompanies(col func(string) string) (err error) {
+	company := Company{
+		Meta: Meta{
+			ID:     MustParseUInt(col("id")),
+			Name:   col("name"),
+			Source: col("source"),
+			Note:   col("note"),
+		},
+		Owner:           col("owner"),
+		Shareholders:    col("shareholders"),
+		InvestedByChina: MustParseBool(col("invested_by_china")),
+	}
+
+	if err = company.Verify(); err != nil {
+		return
+	}
+	err = db.Create(&company).Error
+	if err != nil {
+		return
+	}
+	fmt.Printf("success import %s\n", company.Name)
+	return nil
+}
+
+func ImportMedia(col func(string) string) error {
+	media := Media{
+		Meta: Meta{
+			Name:   col("name"),
+			Source: col("source"),
+			Note:   col("note"),
+		},
+		Domain:    col("domain"),
+		Country:   col("country"),
+		CompanyID: MustParseUInt(col("company_id")),
+	}
+	if err := media.Verify(); err != nil {
+		return err
+	}
+
+	if err := db.Create(&media).Error; err != nil {
+		return err
+	}
+
+	fmt.Printf("success import %s\n", media.Name)
+	return nil
 }
 
 func MustParseUInt(s string) uint {
