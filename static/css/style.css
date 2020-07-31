@@ -415,7 +415,7 @@ a:focus {
   margin-top: 15px;
 }
 
-.about_section .detail-box a {
+/*.about_section .detail-box a {
   display: inline-block;
   padding: 7px 30px;
   background-color: transparent;
@@ -431,7 +431,7 @@ a:focus {
   background-color: #3554d1;
   border-color: transparent;
   color: #ffffff;
-}
+}*/
 
 .about_section .square-box {
   position: absolute;
@@ -1002,6 +1002,21 @@ tbody td{
   padding-bottom: 15px;
   padding-left: 0px;
   padding-right: 0px;
+}
+.headshot{
+  border-width:3px;
+  border-style:dashed;
+  border-color:#FFAC55;
+  padding:5px;
+}
+.headshot img{
+  max-width: 150px;
+}
+.member-info label{
+  text-align: left;
+}
+.member{
+  margin-top: 40px;
 }
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */
