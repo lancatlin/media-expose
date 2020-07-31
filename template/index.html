@@ -62,26 +62,7 @@
                媒體資訊
              </h2><br>
            </div>
-           <table id="myTable" class="table table-hover table-dark tablesorter ">
-              <thead>
-                <tr>
-                  <th>媒體名稱</th>
-                  <th>所屬國家</th>
-                  <th>所屬公司</th>
-                  <th>是否陸資</th>
-                </tr>
-              </thead>
-              <tbody>
-                {{ range . }}
-                <tr>
-                  <td>{{ .Name }}</td>
-                  <td>{{ .Country }}</td>
-                  <td>{{ .Company.Name }}</td>
-                  <td>{{ .Company.InvestedByChina }}</td>
-                </tr>
-                {{ end }}
-              </tbody>
-            </table>
+           {{ template "media_list" .}}
          </div>
        </div>
      </div>
