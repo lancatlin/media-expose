@@ -18,3 +18,4 @@ go.sum
 media-expose
 .vscode
 data
+gorm.db

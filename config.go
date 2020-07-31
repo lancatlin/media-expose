@@ -18,6 +18,8 @@ type Configure struct {
 		Host     string
 		User     string
 		Password string
+
+		Path string // used for specify sqlite path
 	}
 }
 
@@ -41,12 +43,10 @@ func InitialConfigure(path string) (err error) {
 	}
 
 	var conf Configure
-	conf.Mode = "mysql"
+	conf.Mode = "sqlite"
 	conf.Server.Base = "http://localhost:8080"
 	conf.Server.Port = 8080
-	conf.Database.Host = "localhost"
-	conf.Database.User = "media_expose"
-	conf.Database.Password = "change_this_password"
+	conf.Database.Path = "gorm.db"
 
 	enc := yaml.NewEncoder(file)
 	defer enc.Close()

@@ -23,7 +23,7 @@ func OpenDB(conf Configure) {
 		db, err = gorm.Open("sqlite3", "file::memory:")
 
 	case SQLite:
-		db, err = gorm.Open("sqlite3", "/tmp/gorm.db")
+		db, err = gorm.Open("sqlite3", configure.Database.Path)
 
 	default:
 		log.Fatalln("Database mode not defined:", conf.Mode)
