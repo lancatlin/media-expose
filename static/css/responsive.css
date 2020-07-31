@@ -173,7 +173,9 @@
   .form-group label{
     text-align: left;
   }
-
+  .forgetpwd {
+    text-align: center !important;
+  }
 }
 @media (min-width: 576px){
     .footer_section{
