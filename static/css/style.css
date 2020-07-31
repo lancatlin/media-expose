@@ -1,9 +1,22 @@
+html{
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   font-family:  'Noto Sans TC';
   color: #0c0c0c;
   background-color: #ffffff;
+  height: 100%;
+  margin-bottom: 70px;
 }
-
+.footer_section{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 70px;
+}
 .layout_padding {
   padding-top: 90px;
   padding-bottom: 90px;

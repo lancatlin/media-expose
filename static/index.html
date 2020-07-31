@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="一個讓使用者了解媒體背後公司、公司股權、資金來源等資訊揭露的平台，透過資訊揭露來讓使用者判斷媒體可信度。" />
+  <meta name="author" content="AIS3-2020-國家安全-第三組" />
+
+  <title>MediaExpose</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="css/notosanstc.css" rel="stylesheet" />
+
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <div class="navbar-brand">
+            <a href="index.html"><img src="images/AIS3logo.png" alt=""></a>
+            <strong>MediaExpose</strong>
+          </div>
+          <div class="navbar-collapse" id="">
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1">
+
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="index.html">首頁</a>
+                <a href="new.html">新增媒體資料</a>
+                <a href="media.html">媒體列表</a>
+                <a href="companies.html">公司列表</a>
+                <a href="about.html">關於我們</a>
+                <a href="login.html">登入</a>
+                <a href="register.html">註冊</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section ">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="detail-box">
+              <h1>
+                <span>MediaExpose</span> <br>
+              </h1>
+              <p>
+                我們讓使用者了解媒體背後的公司、股權、資金來源...等，一個資訊揭露的平台，來讓使用者判斷媒體可信度。
+              </p>
+              <div class="btn-box">
+                <a href="" class="">
+                關於我們
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+
+  <!-- find section -->
+  <section class="find_section ">
+    <div class="container">
+      <form action="">
+        <div class=" form-row">
+          <div class="col-md-10">
+            <input type="text" class="form-control" placeholder="搜尋 ">
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="">
+              搜尋
+            </button>
+          </div>
+        </div>
+        <small id="searchlHelp" class="form-text text-muted">欄位進行 OR 操作 「媒體名稱 or 所屬國家 or 所屬公司」</small>
+      </form>
+    </div>
+  </section>
+
+  <!-- end find section -->
+
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding-bottom">
+    <div class="square-box">
+      <img src="images/square.png" alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+       <div class="col-md-12">
+         <div class="detail-box">
+           <div class="heading_container">
+             <h2>
+               媒體資訊
+             </h2><br>
+           </div>
+           <table id="myTable" class="table table-hover table-dark tablesorter ">
+              <thead>
+                <tr>
+                  <th>媒體名稱</th>
+                  <th>所屬國家</th>
+                  <th>所屬公司</th>
+                  <th>是否陸資</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>中時新聞</td>
+                  <td>TW</td>
+                  <td>旺旺中時媒體集團</td>
+                  <td>是!?</td>
+                </tr>
+                <tr>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                </tr>
+                <tr>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                </tr>
+              </tbody>
+            </table>
+         </div>
+       </div>
+     </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+  <!-- us section -->
+  <section class="us_section layout_padding2">
+
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          你要使用此平台的原因
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/u-1.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h3 class="price">
+                1000+
+              </h3>
+              <h5>
+                收錄數以千計的公司資料
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/u-2.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h3>
+                20000+
+              </h3>
+              <h5>
+                不斷更新的資料庫
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/u-3.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h3>
+                10000+
+              </h3>
+              <h5>
+                上萬名志願者熱衷於回報資訊
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/u-4.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h3>
+                Free
+              </h3>
+              <h5>
+                目前還沒開始收費^_^
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end us section -->
+
+  <!-- client secction -->
+
+  <section class="client_section layout_padding">
+    <div class="container-fluid">
+      <div class="heading_container">
+        <h2>
+          用戶提供的回報訊息
+        </h2>
+      </div>
+      <div class="client_container">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+
+            <div class="carousel-item active">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/client.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <span>用戶1</span>
+                    <hr>
+                  </h5>
+                  <p>
+                    大家好啊，安安
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/client.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <span>用戶2</span>
+                    <hr>
+                  </h5>
+                  <p>
+                    這是一則測試訊息
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/client.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <span>用戶3</span>
+                    <hr>
+                  </h5>
+                  <p>
+                    AIS3好累
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- end client section -->
+  <!-- footer section -->
+  <section class="container-fluid footer_section ">
+    <div class="container">
+      <p>
+        &copy; <span>AIS3 - 2020 - 國家安全 - 第三組</span>
+      </p>
+    </div>
+  </section>
+  <!-- end  footer section -->
+
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/custom.js"></script>
+
+
+</body>
+
+</html>

@@ -173,8 +173,15 @@
   .form-group label{
     text-align: left;
   }
-}
 
+}
+@media (min-width: 576px){
+    .footer_section{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+}
 @media (max-width: 480px) {}
 
 @media (max-width: 420px) {
