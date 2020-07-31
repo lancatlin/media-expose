@@ -17,13 +17,15 @@ func NewRouter() *mux.Router {
 
 	r.HandleFunc("/media", MediaPage).Methods("GET")
 
+	api := r.PathPrefix("/api").Subrouter()
+	api.Use(enableCors)
 	// API
-	r.HandleFunc("/api/media", searchMedia).Methods("GET")
-	r.HandleFunc("/api/media", newMedia).Methods("POST")
-	r.HandleFunc("/api/media/{id}", getMedia).Methods("GET")
+	api.HandleFunc("/media", searchMedia).Methods("GET")
+	api.HandleFunc("/media", newMedia).Methods("POST")
+	api.HandleFunc("/media/{id}", getMedia).Methods("GET")
 
-	r.HandleFunc("/api/companies", NewCompany).Methods("POST")
-	r.HandleFunc("/api/companies/{id}", GetCompany).Methods("GET")
+	api.HandleFunc("/companies", NewCompany).Methods("POST")
+	api.HandleFunc("/companies/{id}", GetCompany).Methods("GET")
 	return r
 }
 
@@ -42,6 +44,14 @@ func preventDir(next http.Handler) http.Handler {
 			http.NotFound(w, r)
 			return
 		}
+		next.ServeHTTP(w, r)
+	})
+}
+
+func enableCors(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		next.ServeHTTP(w, r)
 	})
 }
