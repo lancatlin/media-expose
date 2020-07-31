@@ -7,7 +7,6 @@ import (
 
 func searchMedia(w http.ResponseWriter, r *http.Request) {
 	tx := db.Begin()
-	defer tx.Close()
 
 	domain := r.FormValue("domain")
 	if domain != "" {
