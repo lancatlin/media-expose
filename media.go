@@ -19,8 +19,7 @@ var (
 type Media struct {
 	Meta
 
-	Domain  string
-	Country string
+	Domain string
 
 	Company   Company
 	CompanyID uint `json:"company_id"`
@@ -70,13 +69,17 @@ func (m Media) domainNotExist() bool {
 	return err != nil
 }
 
+func getMediaByID(id string) (media Media, err error) {
+	err = db.Where("id = ?", id).Preload("Company").First(&media).Error
+	return
+}
+
 func getMedia(w http.ResponseWriter, r *http.Request) {
 	id := mux.Vars(r)["id"]
 
-	var media Media
-	err := db.Where("id = ?", id).Preload("Company").First(&media).Error
+	media, err := getMediaByID(id)
 	if NotFound(err) {
-		http.Error(w, "not found", 404)
+		http.NotFound(w, r)
 		return
 	} else if err != nil {
 		panic(err)
@@ -99,4 +102,16 @@ func (m Media) JSON(w io.Writer) {
 	if err := enc.Encode(m); err != nil {
 		panic(err)
 	}
+}
+
+func MediaInfo(w http.ResponseWriter, r *http.Request) {
+	id := mux.Vars(r)["id"]
+	media, err := getMediaByID(id)
+	if NotFound(err) {
+		http.NotFound(w, r)
+		return
+	} else if err != nil {
+		panic(err)
+	}
+	HTML(w, r, "mediaInfo", media)
 }

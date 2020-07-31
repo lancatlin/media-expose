@@ -17,13 +17,13 @@ type Meta struct {
 	ID        uint
 	CreatedAt time.Time
 	Name      string
+	Country   string
 	Source    string
 	Note      string
 }
 
 type Company struct {
 	Meta
-	Country         string
 	Owner           string
 	Shareholders    string
 	InvestedByChina bool `json:"invested_by_china"`

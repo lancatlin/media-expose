@@ -52,10 +52,11 @@ func ImportCSV(r io.Reader, processor func(func(string) string) error) {
 func ImportCompanies(col func(string) string) (err error) {
 	company := Company{
 		Meta: Meta{
-			ID:     MustParseUInt(col("id")),
-			Name:   col("name"),
-			Source: col("source"),
-			Note:   col("note"),
+			ID:      MustParseUInt(col("id")),
+			Name:    col("name"),
+			Country: col("country"),
+			Source:  col("source"),
+			Note:    col("note"),
 		},
 		Owner:           col("owner"),
 		Shareholders:    col("shareholders"),
@@ -76,12 +77,12 @@ func ImportCompanies(col func(string) string) (err error) {
 func ImportMedia(col func(string) string) error {
 	media := Media{
 		Meta: Meta{
-			Name:   col("name"),
-			Source: col("source"),
-			Note:   col("note"),
+			Name:    col("name"),
+			Country: col("country"),
+			Source:  col("source"),
+			Note:    col("note"),
 		},
 		Domain:    col("domain"),
-		Country:   col("country"),
 		CompanyID: MustParseUInt(col("company_id")),
 	}
 	if err := media.Verify(); err != nil {
