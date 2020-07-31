@@ -16,20 +16,30 @@ var (
 
 	tpls map[string]*template.Template
 
-	ConfPath  string
-	configure Configure
+	ConfPath            string
+	ImportCompaniesPath string
+	ImportMediaPath     string
+	configure           Configure
 )
 
 func main() {
-	flag.StringVar(&ConfPath, "conf", "configure.yaml", "-conf to specify configure file.")
+	parseFlags()
 	var err error
 	configure, err = LoadConfigure(ConfPath)
 	if err != nil {
 		InitialConfigure(ConfPath)
+		fmt.Printf("configure file has been successfully generated at %s\n", ConfPath)
 		return
 	}
-	fmt.Println(configure)
+
 	OpenDB(configure)
+
+	if ImportCompaniesPath != "" {
+		ImportCSVFromFile(ImportCompaniesPath, ImportCompanies)
+	}
+	if ImportMediaPath != "" {
+		ImportCSVFromFile(ImportMediaPath, ImportMedia)
+	}
 	loadTemplates()
 	r := NewRouter()
 	srv := http.Server{
@@ -40,4 +50,11 @@ func main() {
 	}
 	fmt.Printf("Server listen on %s\n", configure.Server.Base)
 	log.Fatal(srv.ListenAndServe())
+}
+
+func parseFlags() {
+	flag.StringVar(&ConfPath, "conf", "configure.yaml", "-conf to specify configure file.")
+	flag.StringVar(&ImportCompaniesPath, "import-companies", "", "-import-companies to specify the companies CSV file path.")
+	flag.StringVar(&ImportMediaPath, "import-media", "", "-import-media to specify the media CSV file path.")
+	flag.Parse()
 }

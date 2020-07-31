@@ -5,8 +5,19 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"os"
 	"strconv"
 )
+
+func ImportCSVFromFile(filename string, processor func(func(string) string) error) {
+	file, err := os.Open(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+	ImportCSV(file, processor)
+	os.Exit(0)
+}
 
 func ImportCSV(r io.Reader, processor func(func(string) string) error) {
 	dec := csv.NewReader(r)
