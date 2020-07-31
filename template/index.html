@@ -1,257 +1,253 @@
 {{ define "title" }}首頁{{ end }}
 {{ define "content" }}
-<!-- slider section -->
-<section class="slider_section ">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="detail-box">
-          <h1>
-            <span>MediaExpose</span> <br>
-            <br>
-          </h1>
-          <p>
-            我們讓使用者了解媒體背後的公司、股權、資金來源...等，一個資訊揭露的平台，來讓使用者判斷媒體可信度。
-          </p>
-          <div class="btn-box">
-            <a href="" class="">
-            關於我們
-            </a>
+    <!-- slider section -->
+    <section class="slider_section ">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="detail-box">
+              <h1>
+                <span>MediaExpose</span> <br>
+              </h1>
+              <p>
+                我們讓使用者了解媒體背後的公司、股權、資金來源...等，一個資訊揭露的平台，來讓使用者判斷媒體可信度。
+              </p>
+              <div class="btn-box">
+                <a href="" class="">
+                關於我們
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+    <!-- end slider section -->
   </div>
-</section>
-<!-- end slider section -->
-</div>
 
-<!-- find section -->
-<section class="find_section ">
-<div class="container">
-  <form action="">
-    <div class=" form-row">
-      <div class="col-md-5">
-        <input type="text" class="form-control" placeholder="公司名稱 ">
-      </div>
-      <div class="col-md-5">
-        <input type="text" class="form-control" placeholder="還有什麼欄位可以加進來x ">
-      </div>
-      <div class="col-md-2">
-        <button type="submit" class="">
-          搜尋
-        </button>
-      </div>
+  <!-- find section -->
+  <section class="find_section ">
+    <div class="container">
+      <form action="">
+        <div class=" form-row">
+          <div class="col-md-10">
+            <input type="text" class="form-control" placeholder="搜尋 ">
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="">
+              搜尋
+            </button>
+          </div>
+        </div>
+        <small id="searchlHelp" class="form-text text-muted">欄位進行 OR 操作 「媒體名稱 or 所屬國家 or 所屬公司」</small>
+      </form>
     </div>
+  </section>
 
-  </form>
-</div>
-</section>
-
-<!-- end find section -->
+  <!-- end find section -->
 
 
-<!-- about section -->
+  <!-- about section -->
 
-<section class="about_section layout_padding-bottom">
-<div class="square-box">
-  <img src="/static/images/square.png" alt="">
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="detail-box">
-        <div class="heading_container">
-          <h2>
-            公司資訊
-          </h2><br>
-        </div>
-        <table class="table table-hover table-dark ">
-          <thead>
-            <tr>
-              <th>編號</th>
-              <th>公司名稱</th>
-              <th>欄位1</th>
-              <th>欄位2</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>台G電</td>
-              <td>Doe</td>
-              <td>$10000000</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>AIS3</td>
-              <td>Moe</td>
-              <td>$412346</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>OOXX</td>
-              <td>Dooley</td>
-              <td>$1234011</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <section class="about_section layout_padding-bottom">
+    <div class="square-box">
+      <img src="images/square.png" alt="">
     </div>
-  </div>
-</div>
-</section>
-
-<!-- end about section -->
-<!-- us section -->
-<section class="us_section layout_padding2">
-
-<div class="container">
-  <div class="heading_container">
-    <h2>
-      你要使用此平台的原因
-    </h2>
-  </div>
-  <div class="row">
-    <div class="col-md-3 col-sm-6">
-      <div class="box">
-        <div class="img-box">
-          <img src="/static/images/u-1.png" alt="">
-        </div>
-        <div class="detail-box">
-          <h3 class="price">
-            1000+
-          </h3>
-          <h5>
-            收錄數以千計的公司資料
-          </h5>
-        </div>
-      </div>
+    <div class="container">
+      <div class="row">
+       <div class="col-md-12">
+         <div class="detail-box">
+           <div class="heading_container">
+             <h2>
+               媒體資訊
+             </h2><br>
+           </div>
+           <table id="myTable" class="table table-hover table-dark tablesorter ">
+              <thead>
+                <tr>
+                  <th>媒體名稱</th>
+                  <th>所屬國家</th>
+                  <th>所屬公司</th>
+                  <th>是否陸資</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>中時新聞</td>
+                  <td>TW</td>
+                  <td>旺旺中時媒體集團</td>
+                  <td>是!?</td>
+                </tr>
+                <tr>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                </tr>
+                <tr>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                  <td>XXXX</td>
+                </tr>
+              </tbody>
+            </table>
+         </div>
+       </div>
+     </div>
     </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="box">
-        <div class="img-box">
-          <img src="/static/images/u-2.png" alt="">
-        </div>
-        <div class="detail-box">
-          <h3>
-            20000+
-          </h3>
-          <h5>
-            不斷更新的資料庫
-          </h5>
-        </div>
+  </section>
+
+  <!-- end about section -->
+  <!-- us section -->
+  <section class="us_section layout_padding2">
+
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          你要使用此平台的原因
+        </h2>
       </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="box">
-        <div class="img-box">
-          <img src="/static/images/u-3.png" alt="">
-        </div>
-        <div class="detail-box">
-          <h3>
-            10000+
-          </h3>
-          <h5>
-            上萬名志願者熱衷於回報資訊
-          </h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="box">
-        <div class="img-box">
-          <img src="/static/images/u-4.png" alt="">
-        </div>
-        <div class="detail-box">
-          <h3>
-            Free
-          </h3>
-          <h5>
-            目前還沒開始收費^_^
-          </h5>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- end us section -->
-
-<!-- client secction -->
-
-<section class="client_section layout_padding">
-<div class="container-fluid">
-  <div class="heading_container">
-    <h2>
-      用戶提供的回報訊息
-    </h2>
-  </div>
-  <div class="client_container">
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-
-        <div class="carousel-item active">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
           <div class="box">
             <div class="img-box">
-              <img src="/static/images/client.png" alt="">
+              <img src="images/u-1.png" alt="">
             </div>
             <div class="detail-box">
+              <h3 class="price">
+                1000+
+              </h3>
               <h5>
-                <span>用戶1</span>
-                <hr>
+                收錄數以千計的公司資料
               </h5>
-              <p>
-                大家好啊，安安
-              </p>
             </div>
           </div>
         </div>
-        <div class="carousel-item">
+        <div class="col-md-3 col-sm-6">
           <div class="box">
             <div class="img-box">
-              <img src="/static/images/client.png" alt="">
+              <img src="images/u-2.png" alt="">
             </div>
             <div class="detail-box">
+              <h3>
+                20000+
+              </h3>
               <h5>
-                <span>用戶2</span>
-                <hr>
+                不斷更新的資料庫
               </h5>
-              <p>
-                這是一則測試訊息
-              </p>
             </div>
           </div>
         </div>
-        <div class="carousel-item">
+        <div class="col-md-3 col-sm-6">
           <div class="box">
             <div class="img-box">
-              <img src="/static/images/client.png" alt="">
+              <img src="images/u-3.png" alt="">
             </div>
             <div class="detail-box">
+              <h3>
+                10000+
+              </h3>
               <h5>
-                <span>用戶3</span>
-                <hr>
+                上萬名志願者熱衷於回報資訊
               </h5>
-              <p>
-                AIS3好累
-              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/u-4.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h3>
+                Free
+              </h3>
+              <h5>
+                目前還沒開始收費^_^
+              </h5>
             </div>
           </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="sr-only">Next</span>
-      </a>
     </div>
+  </section>
 
-  </div>
-</div>
-</section>
+  <!-- end us section -->
 
-<!-- end client section -->
+  <!-- client secction -->
+
+  <section class="client_section layout_padding">
+    <div class="container-fluid">
+      <div class="heading_container">
+        <h2>
+          用戶提供的回報訊息
+        </h2>
+      </div>
+      <div class="client_container">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+
+            <div class="carousel-item active">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/client.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <span>用戶1</span>
+                    <hr>
+                  </h5>
+                  <p>
+                    大家好啊，安安
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/client.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <span>用戶2</span>
+                    <hr>
+                  </h5>
+                  <p>
+                    這是一則測試訊息
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/client.png" alt="">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    <span>用戶3</span>
+                    <hr>
+                  </h5>
+                  <p>
+                    AIS3好累
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- end client section -->
 {{ end }}
