@@ -994,5 +994,8 @@ tbody td{
 .form-group label{
   text-align: right;
 }
+.form-group div{
+  text-align: left;
+}
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */
