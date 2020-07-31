@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"time"
 
@@ -79,8 +80,8 @@ func NotFound(err error) bool {
 }
 
 func (c Company) Verify() (err error) {
-	if c.ID != 0 {
-		return errors.New("id should be 0")
+	if c.ID == 0 {
+		return errors.New("id shouldn't be 0")
 	}
 
 	if c.duplicateName() {
@@ -88,6 +89,7 @@ func (c Company) Verify() (err error) {
 	}
 
 	if c.TooLong() {
+		log.Println(len(c.Meta.Name))
 		return errors.New("some data is too long")
 	}
 
@@ -102,11 +104,11 @@ func (c Company) duplicateName() bool {
 }
 
 func (c Company) TooLong() bool {
-	return c.Meta.TooLong() || len(c.Owner) > 10 || len(c.Shareholders) > 30
+	return c.Meta.TooLong() || len(c.Owner) > 50 || len(c.Shareholders) > 200
 }
 
 func (m Meta) TooLong() bool {
-	return len(m.Name) > 30 || len(m.Source) > 200 || len(m.Note) > 200
+	return len(m.Name) > 100 || len(m.Source) > 1000 || len(m.Note) > 1000
 }
 
 func (m Meta) IsEmpty() bool {

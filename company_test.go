@@ -9,6 +9,7 @@ import (
 func TestNewCompany(t *testing.T) {
 	openTestDB()
 	body := `{
+		"id": 1493,
 		"name": "Company Name",
 		"country": "CN",
 		"owner": "Owner",
@@ -18,9 +19,9 @@ func TestNewCompany(t *testing.T) {
 	response := curl("POST", "/api/companies", body)
 	data := resBody(response)
 	assert.Equal(t, 200, response.StatusCode, data)
-	assert.Equal(t, "1", data)
+	assert.Equal(t, "1493", data)
 
-	response = curl("GET", "/api/companies/1", "")
+	response = curl("GET", "/api/companies/1493", "")
 	assert.Equal(t, 200, response.StatusCode)
 }
 
@@ -28,6 +29,7 @@ func TestDupCompany(t *testing.T) {
 	openTestDB()
 
 	body := `{
+		"id": 163032,
 		"name": "A company",
 		"country": "CN",
 		"owner": "Owner",

@@ -18,6 +18,7 @@ func TestDomain(t *testing.T) {
 func TestNewMedia(t *testing.T) {
 	openTestDB()
 	company := `{
+		"id": 1234,
 		"name": "Company Name",
 		"country": "CN",
 		"owner": "Owner",
@@ -31,7 +32,7 @@ func TestNewMedia(t *testing.T) {
 		"name": "Media Name",
 		"domain": "example.com",
 		"country": "TW",
-		"company_id": 1,
+		"company_id": 1234,
 		"source": "Wikipedia", 
 		"note": "Note"
 	}`
@@ -48,7 +49,7 @@ func TestCompanyNotFound(t *testing.T) {
 		"name": "Media Name",
 		"domain": "example.com",
 		"country": "TW",
-		"company_id": 1,
+		"company_id": 2345,
 		"source": "Wikipedia", 
 		"note": "Note"
 	}`
