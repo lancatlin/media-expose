@@ -72,24 +72,14 @@
                 </tr>
               </thead>
               <tbody>
+                {{ range . }}
                 <tr>
-                  <td>中時新聞</td>
-                  <td>TW</td>
-                  <td>旺旺中時媒體集團</td>
-                  <td>是!?</td>
+                  <td>{{ .Name }}</td>
+                  <td>{{ .Country }}</td>
+                  <td>{{ .Company.Name }}</td>
+                  <td>{{ .Company.InvestedByChina }}</td>
                 </tr>
-                <tr>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                </tr>
-                <tr>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                  <td>XXXX</td>
-                </tr>
+                {{ end }}
               </tbody>
             </table>
          </div>

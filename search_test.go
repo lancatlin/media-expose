@@ -15,7 +15,7 @@ func TestSearchByDomain(t *testing.T) {
 	}
 	assert.NoError(t, db.Create(&media).Error)
 	domain := "example.com"
-	res := curl("GET", fmt.Sprintf("/api/search?domain=%s", domain), "")
+	res := curl("GET", fmt.Sprintf("/api/media?domain=%s", domain), "")
 	assert.Equal(t, 200, res.StatusCode)
 
 	var newMedia []Media
@@ -32,6 +32,6 @@ func TestSearchNotFound(t *testing.T) {
 	}
 	assert.NoError(t, db.Create(&media).Error)
 	domain := "another.com"
-	response := curl("GET", "/api/search?domain="+domain, "")
+	response := curl("GET", "/api/media?domain="+domain, "")
 	assert.Equal(t, "[]\n", resBody(response))
 }
