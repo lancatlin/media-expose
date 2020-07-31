@@ -13,3 +13,9 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+configure.yaml
+go.sum
+media-expose
+.vscode
+data
+gorm.db

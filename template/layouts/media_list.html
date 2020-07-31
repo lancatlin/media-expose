@@ -1,0 +1,28 @@
+{{ define "media_list" }}
+<table id="myTable" class="table table-hover table-dark tablesorter ">
+    <thead>
+    <tr>
+        <th>媒體名稱</th>
+        <th>所屬國家</th>
+        <th>資助公司</th>
+        <th>是否陸資</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{ range . }}
+    <tr onclick="window.location='/media/{{ .ID }}'">
+        <td>{{ .Name }}</td>
+        <td>{{ .Country }}</td>
+        <td>{{ .Company.Name }}</td>
+        <td>{{ .Company.InvestedByChina }}</td>
+    </tr>
+    {{ end }}
+    </tbody>
+</table>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.30.5/css/theme.blue.min.css"></link>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.30.5/js/jquery.tablesorter.min.js"></script>
+<script>
+$("#myTable").tablesorter({
+});
+</script>
+{{ end }}

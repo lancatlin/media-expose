@@ -1,0 +1,23 @@
+{{ define "base" }}
+<!DOCTYPE html>
+<html>
+
+<head>
+  {{ template "head" .Session }}
+</head>
+
+<body>
+  <div class="hero_area">
+    <header>
+      {{ template "header" .Session }}
+    </header>
+    {{ block "content" .Data }}{{ end }}
+    {{ block "content_with_meta" . }}{{  end }}
+    <footer>
+      {{ template "footer" .Session }}
+    </footer>
+  </div> 
+</body>
+
+</html>
+{{ end }}

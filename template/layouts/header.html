@@ -1,0 +1,39 @@
+{{ define "header" }}
+<!-- header section strats -->
+<header class="header_section">
+    <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg custom_nav-container">
+        <div class="navbar-brand">
+        <a href="/"><img src="/static/images/AIS3logo.png" alt=""></a>
+        <strong>MediaExpose</strong>
+        </div>
+        <div class="navbar-collapse" id="">
+        <div class="custom_menu-btn">
+            <button onclick="openNav()">
+            <span class="s-1">
+
+            </span>
+            <span class="s-2">
+
+            </span>
+            <span class="s-3">
+
+            </span>
+            </button>
+        </div>
+        <div id="myNav" class="overlay">
+            <div class="overlay-content">
+            <a href="/">首頁</a>
+            <a href="/new">新增媒體資料</a>
+            <a href="/media">媒體列表</a>
+            <a href="/about">關於我們</a>
+            <a href="/login">登入</a>
+            <a href="/register">註冊</a>
+            </div>
+        </div>
+        </div>
+    </nav>
+    </div>
+</header>
+<!-- end header section -->
+{{ end }}
