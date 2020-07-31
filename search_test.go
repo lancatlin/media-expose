@@ -10,6 +10,7 @@ import (
 
 func TestSearchByDomain(t *testing.T) {
 	openTestDB()
+	defer lock.Unlock()
 	media := Media{
 		Domain: "example.com",
 	}
@@ -18,20 +19,21 @@ func TestSearchByDomain(t *testing.T) {
 	res := curl("GET", fmt.Sprintf("/api/search?domain=%s", domain), "")
 	assert.Equal(t, 200, res.StatusCode)
 
-	var newMedia Media
+	var newMedia []Media
 	dec := json.NewDecoder(res.Body)
 	dec.Decode(&newMedia)
 
-	assert.Equal(t, media.Domain, newMedia.Domain)
+	assert.Equal(t, media.Domain, newMedia[0].Domain)
 }
 
 func TestSearchNotFound(t *testing.T) {
 	openTestDB()
+	defer lock.Unlock()
 	media := Media{
-		Domain: "example.com",
+		Domain: "example.org",
 	}
 	assert.NoError(t, db.Create(&media).Error)
 	domain := "another.com"
 	response := curl("GET", "/api/search?domain="+domain, "")
-	assert.Equal(t, 404, response.StatusCode, resBody(response))
+	assert.Equal(t, "[]\n", resBody(response))
 }

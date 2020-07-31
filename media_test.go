@@ -17,6 +17,7 @@ func TestDomain(t *testing.T) {
 
 func TestNewMedia(t *testing.T) {
 	openTestDB()
+	defer lock.Unlock()
 	company := `{
 		"name": "Company Name",
 		"country": "CN",
@@ -44,6 +45,7 @@ func TestNewMedia(t *testing.T) {
 
 func TestCompanyNotFound(t *testing.T) {
 	openTestDB()
+	defer lock.Unlock()
 	media := `{
 		"name": "Media Name",
 		"domain": "example.com",

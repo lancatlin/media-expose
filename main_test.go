@@ -5,12 +5,18 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strings"
+	"sync"
+)
+
+var (
+	lock = sync.Mutex{}
 )
 
 func openTestDB() {
 	conf := Configure{
 		Mode: Memory,
 	}
+	lock.Lock()
 	OpenDB(conf)
 }
 

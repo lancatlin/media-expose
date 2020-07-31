@@ -17,11 +17,10 @@ func OpenDB(conf Configure) {
 	if db != nil {
 		db.Close()
 	}
-
 	var err error
 	switch conf.Mode {
 	case Memory:
-		db, err = gorm.Open("sqlite3", "file::memory:?cache=shared")
+		db, err = gorm.Open("sqlite3", "file::memory:")
 
 	case SQLite:
 		db, err = gorm.Open("sqlite3", "/tmp/gorm.db")
