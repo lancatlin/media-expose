@@ -35,7 +35,7 @@
               </thead>
               <tbody>
                 {{ range . }}
-                <tr>
+              <tr onclick="window.location='/media/{{ .ID }}'">
                   <td>{{ .Name }}</td>
                   <td>{{ .Country }}</td>
                   <td>{{ .Company.Name }}</td>

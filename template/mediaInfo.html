@@ -1,0 +1,98 @@
+{{ define "title" }}媒體資訊{{ end }}
+{{ define "content" }}
+  <!-- about section -->
+
+<section class="about_section layout_padding-bottom">
+  <div class="square-box">
+    <img src="images/square.png" alt="">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              媒體資料
+            </h2><br>
+            <h4>
+              {{ .Name }}
+            </h4><br>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">所屬國家：</label>
+            <div class="col-sm-4">
+              <span>{{ .Country }}</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">網域：</label>
+            <div class="col-sm-4">
+              <span><a href="http://{{ .Domain }}">{{ .Domain }}</a></span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">來源：</label>
+            <div class="col-sm-4">
+                <span>{{ .Source }}</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">備註：</label>
+            <div class="col-sm-4">
+                <span>{{ .Note }}</span>
+            </div>
+          </div>
+        </div><br>
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              所屬公司
+            </h2><br>
+            <h4>
+              {{ .Company.Name }}
+            </h4><br>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">統一編號：</label>
+            <div class="col-sm-4">
+              <span>{{ .Company.ID }}</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">所屬國家：</label>
+            <div class="col-sm-4">
+              <span>{{ .Company.Country }}</span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">擁有人：</label>
+            <div class="col-sm-4">
+              <span>{{ .Company.Owner }}<span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">股東：</label>
+            <div class="col-sm-4">
+              <span>{{ .Company.Shareholders }}<span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">來源：</label>
+            <div class="col-sm-4">
+              <span>{{ .Company.Source }}<span>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-2 col-form-label">備註：</label>
+            <div class="col-sm-4">
+              <span>{{ .Company.Note }}<span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- end about section -->
+{{ end }}

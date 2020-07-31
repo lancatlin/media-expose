@@ -16,6 +16,7 @@ func NewRouter() *mux.Router {
 	r.HandleFunc("/new", page("new"))
 
 	r.HandleFunc("/media", MediaPage).Methods("GET")
+	r.HandleFunc("/media/{id}", MediaInfo).Methods("GET")
 
 	api := r.PathPrefix("/api").Subrouter()
 	api.Use(enableCors)
