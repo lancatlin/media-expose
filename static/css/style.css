@@ -994,5 +994,14 @@ tbody td{
 .form-group label{
   text-align: right;
 }
+.form-group div{
+  text-align: left;
+}
+.forgetpwd {
+  padding-top: 5px;
+  padding-bottom: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */
