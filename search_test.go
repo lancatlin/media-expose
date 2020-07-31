@@ -10,7 +10,6 @@ import (
 
 func TestSearchByDomain(t *testing.T) {
 	openTestDB()
-	defer lock.Unlock()
 	media := Media{
 		Domain: "example.com",
 	}
@@ -28,7 +27,6 @@ func TestSearchByDomain(t *testing.T) {
 
 func TestSearchNotFound(t *testing.T) {
 	openTestDB()
-	defer lock.Unlock()
 	media := Media{
 		Domain: "example.org",
 	}

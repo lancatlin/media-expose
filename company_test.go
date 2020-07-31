@@ -8,7 +8,6 @@ import (
 
 func TestNewCompany(t *testing.T) {
 	openTestDB()
-	defer lock.Unlock()
 	body := `{
 		"name": "Company Name",
 		"country": "CN",
@@ -27,7 +26,6 @@ func TestNewCompany(t *testing.T) {
 
 func TestDupCompany(t *testing.T) {
 	openTestDB()
-	defer lock.Unlock()
 
 	body := `{
 		"name": "A company",
