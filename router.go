@@ -2,13 +2,14 @@ package main
 
 import (
 	"net/http"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
 
 func NewRouter() *mux.Router {
 	r := mux.NewRouter()
-	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	r.PathPrefix("/static/").Handler(http.StripPrefix("/static", preventDir(http.FileServer(http.Dir("static")))))
 
 	// Pages
 	r.HandleFunc("/", Index)
@@ -33,4 +34,14 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 	HTML(w, r, "index", media)
+}
+
+func preventDir(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if strings.HasSuffix(r.URL.Path, "/") {
+			http.NotFound(w, r)
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
 }
